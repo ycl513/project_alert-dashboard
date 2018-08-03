@@ -1,0 +1,117 @@
+{% extends 'layout.html' %}
+
+{% block title %}In Location Indicator{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-inlocation.css') }}">
+{% endblock %}
+
+{% block content %}
+<nav class="navbar sticky-top navbar-expand-md bg-light navbar-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img class="img-fluid" src="{{ url_for('static', filename='img/fedex-logo.png') }}" alt="logo" width="75" height="244">
+        In-Location Indicator
+      </a>
+    </div>
+    <form class="form-inline navbar-left">
+      <div class="form-group">
+      </div>
+    </form>
+  </div>
+</nav>
+
+<section main-container>
+  <div class="container-fluid">
+    <h1><img class="img-responsive" src="{{ url_for('static', filename='img/title.png') }}"></h1>
+    <!--Alert Overview(SnapShot)-->
+    <div class="float-lg-right"><button type="button" class="btn btn-basic btn-lg"><img class="img-responsive" src="{{ url_for('static', filename='img/settings.png') }}"></button></div><br>
+    <div class="float-lg-right"></div><br>
+    <div class="float-lg-right"></div><br>
+    <div class="float-lg-right"></div><br>
+    <div class="float-lg-right"></div><br>
+    <div class="card bg-light text-dark margin-top-md">
+      <div class="card-header"> Alert Overview </div>
+      <div class="card-body bg-white">
+        <div class="row">
+          <div class="col-md-3 margin-top-sm margin-bottom-sm">
+            <div class="card text-white bg-primary o-hidden h-100">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/zd.png') }}">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/bulb.png') }}">
+                  </div>
+                  <div class="col-md-8 text-right">
+                    <div class="huge">4</div>
+                    <div>Volume Alerts</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 margin-top-sm margin-bottom-sm">
+            <div class="card text-white bg-success o-hidden h-100">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/circle.png') }}">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/truck.png') }}">
+                  </div>
+                  <div class="col-md-8 text-right">
+                    <div class="huge">5</div>
+                    <div>Staff Alerts</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 margin-top-sm margin-bottom-sm">
+            <div class="card text-white bg-warning o-hidden h-100">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/lock.png') }}">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/airplane.png') }}">
+                  </div>
+                  <div class="col-md-8 text-right">
+                    <div class="huge">8</div>
+                    <div>Timing Alerts</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 margin-top-sm margin-bottom-sm">
+            <div class="card text-white bg-info o-hidden h-100">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/clock.png') }}">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/truck.png') }}">
+                  </div>
+                  <div class="col-md-8 text-right">
+                    <div class="huge">2</div>
+                    <div>Environmental Alerts</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

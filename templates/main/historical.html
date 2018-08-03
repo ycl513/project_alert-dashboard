@@ -1,0 +1,117 @@
+{% extends 'layout.html' %}
+
+{# this is bad and I should feel bad  #}
+{% macro alert_icon(category, priority) -%}
+  <img class="icon" src="/static/img/{{ category|lower }}_{{ priority + 1 }}.png" value="high" alt="Chania">
+{%- endmacro %}
+
+{% block title %}Historical Data{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+  <!--Navigation bar-->
+  <nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: #F6F2F9;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" data-toggle="tooltip" data-placement="right" title="Go back to dashboard." href="{{ url_for('main.index')}}">
+          <img class="img-fluid" src="{{ url_for('static', filename='img/fedex-logo.png') }}" alt="logo" width="75" height="244">
+          Alert Management Dashboard
+        </a>
+      </div>
+      <ul class="nav mr-auto">
+        <li class="nav-item"><a href="{{ url_for('main.currentalert')}}" class="btn btn-info" role="button"><i class="fas fa-bell"></i> Current Alerts</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid margin-top-md">
+    <div class="card card-default">
+      <div class="card-header">
+        <h3>Historical Data</h3>
+      </div>
+
+      <div class="card-body">
+        <table id="alerts" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Priority</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for alert in alerts %}
+              <tr>
+                <td>{{ alert.priority }}</td>
+                <td>{{ alert_icon(alert.category, alert.priority) }} {{ alert.category }}</td>
+                <td>{{ alert.created_on }}</td>
+                <td>{{ alert.description }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Priority</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Description</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container-fluid margin-top-md">
+    <div class="card card-default">
+      <div class="card-header">
+        <h3>Historical Timeline</h3>
+      </div>
+      <div class="card-body">
+        <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1v1CowLQrf3Rxlo-MgsjTV54IDtU-iqvRXDSQKhgeekg&font=Default&lang=en&initial_zoom=0&height=400' width='100%' height='400' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+      </div>
+    </div>
+  </div>
+
+  <br>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    var format = function(data) {
+      return "<div class=\"slider\"><ul class=\"list-group\"><li class=\"list-group-item\">Truck number: 12345</li><li class=\"list-group-item\">Location: Memphis, Tennessee</li></div>";
+    }
+
+    // yeah so this part is /kinda/ bad, but it sort of works so yeah
+    // right now the biggest issue is that any table rows *not* displayed
+    // when the page renders don't have the clickable display.
+    // I have 1) no idea why this is happening and 2) no idea how to fix it,
+    // but for now it'll have to work. If I have more time, I would definitely
+    // be able to fix it, but for now this'll have to do.
+
+    $(document).ready(function() {
+      var table = $('#alerts').DataTable({});
+
+      $('#alerts tr').on('click', function() {
+        var tr = $(this);
+        var row = table.row(tr)
+
+        if (row.child.isShown()) {
+          row.child.hide();
+          tr.removeClass('shown');
+        } else {
+          row.child(format(row.data())).show();
+          tr.addClass('shown');
+
+          $('div.slider', row.child()).slideDown();
+        }
+      });
+    });
+  </script>
+{% endblock %}

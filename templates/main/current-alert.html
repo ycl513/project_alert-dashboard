@@ -1,0 +1,380 @@
+{% extends 'layout.html' %}
+
+{% block title %}Current Alert{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+{% endblock %}
+
+{% block content %}
+  <!--Navigation bar-->
+  <nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: #F6F2F9;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" data-toggle="tooltip" data-placement="right" title="Go back to dashboard." href="{{ url_for('main.index')}}">
+          <img class="img-fluid" src="{{ url_for('static', filename='img/fedex-logo.png') }}" alt="logo" width="75" height="244">
+          Alert Management Dashboard
+        </a>
+      </div>
+      <ul class="nav mr-auto">
+        <li class="nav-item"><a href="{{ url_for('main.historical')}}" class="btn btn-info" role="button"><i class="fas fa-history"></i> Historical Data</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!--Sidebar and main content-->
+  <div class="d-flex align-items-stretch">
+      <!--Main content-->
+      <div class="container-fluid bg-white">
+        <div class="row margin-top-lg">
+          <div class="col-md-12">
+            <h3><a data-toggle="tooltip" data-placement="right" title="Alerts are sorted by different priority. They are distributed into three columns. From left to right is high,medium,and low priority alerts respectively.">Current Alerts <i class="fas fa-info-circle"></i></a></h3>
+          </div>
+        </div>
+        <!--Tab-->
+        <div class="row">
+          <div class="col-md-12">
+            <!--Alert-->             
+            <div class="row margin-top-lg">
+              <div class="col-md-4">
+                <div id="accordionHigh">
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingOneHigh" data-toggle="collapse" data-target="#collapseOneHigh" aria-expanded="true" aria-controls="collapseOneHigh" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/timing_3.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">10:00am
+                            <i class="fa" aria-hidden="true"></i> 
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="collapseOneHigh" class="collapse show" aria-labelledby="headingOneHigh" data-parent="#accordionHigh">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Timing Alert</p>
+                        <ul>
+                          <li>Description: Late Plane</li>
+                          <li>Plane No.: </li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingTwoHigh" data-toggle="collapse" data-target="#collapseTwoHigh" aria-expanded="false" aria-controls="collapseTwoHigh" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/volume_3.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">10:15am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseTwoHigh" class="collapse show" aria-labelledby="headingTwoHigh" data-parent="#accordionHigh">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Volume Alert</p>
+                        <ul>
+                          <li>Description: Additional inbound truck</li>
+                          <li>Truck No.: </li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingThreeHigh" data-toggle="collapse" data-target="#collapseThreeHigh" aria-expanded="false" aria-controls="collapseThreeHigh" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/environmental_3.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">10:21am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseThreeHigh" class="collapse show" aria-labelledby="headingThreeHigh" data-parent="#accordionHigh">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Environmental Alert</p>
+                        <ul>
+                          <li>Description: National Weather Service alert issued</li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingFourHigh" data-toggle="collapse" data-target="#collapseFourHigh" aria-expanded="false" aria-controls="collapseFourHigh" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/volume_3.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">10:22am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseFourHigh" class="collapse show" aria-labelledby="headingFourHigh" data-parent="#accordionHigh">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Volume Alert</p>
+                        <ul>
+                          <li>Description: Additional inbound plane</li>
+                          <li>Truck No.: </li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingFiveHigh" data-toggle="collapse" data-target="#collapseFiveHigh" aria-expanded="false" aria-controls="collapseFiveHigh" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/volume_3.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">10:23am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseFiveHigh" class="collapse show" aria-labelledby="headingFiveHigh" data-parent="#accordionHigh">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Volume Alert</p>
+                        <ul>
+                          <li>Description: Volume exceeds route capacities</li>
+                          <li>Route: </li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingSixHigh" data-toggle="collapse" data-target="#collapseSixHigh" aria-expanded="false" aria-controls="collapseSixHigh" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/timing_3.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">10:25am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseSixHigh" class="collapse show" aria-labelledby="headingSixHigh" data-parent="#accordionHigh">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Timing Alert</p>
+                        <ul>
+                          <li>Description: Early truck</li>
+                          <li>Truck No.: </li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div id="accordionMedium">
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingOneMedium" data-toggle="collapse" data-target="#collapseOneMedium" aria-expanded="false" aria-controls="collapseOneMedium" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/staff_2.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">11:00am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="collapseOneMedium" class="collapse show" aria-labelledby="headingOneMedium" data-parent="#accordionMedium">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Staff Alert</p>
+                        <ul>
+                          <li>Description: Unscheduled employees on the clock</li>
+                          <li>Employee Information: </li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingTwoMedium" data-toggle="collapse" data-target="#collapseTwoMedium" aria-expanded="false" aria-controls="collapseTwoMedium" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/volume_2.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">11:20am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="collapseTwoMedium" class="collapse show" aria-labelledby="headingTwoMedium" data-parent="#accordionMedium">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Volume Alert</p>
+                        <ul>
+                          <li>Description: Volume exceeds route capacities</li>
+                          <li>Route: </li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingThreeMedium" data-toggle="collapse" data-target="#collapseThreeMedium" aria-expanded="false" aria-controls="collapseThreeMedium" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/timing_2.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">11:22am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="collapseThreeMedium" class="collapse show" aria-labelledby="headingThreeMedium" data-parent="#accordionMedium">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Timing Alert</p>
+                        <ul>
+                          <li>Description: Unexpected ratio of time-definite services in inbound volume</li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingFourMedium" data-toggle="collapse" data-target="#collapseFourMedium" aria-expanded="false" aria-controls="collapseFourMedium" role="button" style="border-color: #000000;">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/timing_2.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">11:25am
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="collapseFourMedium" class="collapse show" aria-labelledby="headingFourMedium" data-parent="#accordionMedium">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Timing Alert</p>
+                        <ul>
+                          <li>Description: Early truck</li>
+                          <li>Truck No.</li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div id="accordionLow">
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingOneLow" data-toggle="collapse" data-target="#collapseOneLow" aria-expanded="false" aria-controls="collapseOneLow" role="button" style="border-color: #000000;">
+                     <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/environmental_1.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">12:00pm
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="collapseOneLow" class="collapse show" aria-labelledby="headingOneLow" data-parent="#accordionLow">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Environmental Alert</p>
+                        <ul>
+                          <li>Description: Significant traffic disruption</li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingTwoLow" data-toggle="collapse" data-target="#collapseTwoLow" aria-expanded="false" aria-controls="collapseTwoLow" role="button" style="border-color: #000000;">
+                     <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/timing_1.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">12:01pm
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="collapseTwoLow" class="collapse show" aria-labelledby="headingTwoLow" data-parent="#accordionLow">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Timing Alert</p>
+                        <ul>
+                          <li>Description: Unexpected ratio of time-definite services in inbound volume</li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="border-color: #000000;">
+                    <div class="card-header" id="headingThreeLow" data-toggle="collapse" data-target="#collapseThreeLow" aria-expanded="false" aria-controls="collapseThreeLow" role="button" style="border-color: #000000;">
+                     <div class="row">
+                        <div class="col-md-6">
+                          <img class="img-fluid" src="{{ url_for('static', filename='img/timing_1.png') }}" width="50" height="50">
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="text-center padding-top-md">12:10pm
+                            <i class="fa" aria-hidden="true"></i>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="collapseThreeLow" class="collapse show" aria-labelledby="headingThreeLow" data-parent="#accordionLow">
+                      <div class="card-body">
+                        <p class="font-weight-bold">Timing Alert</p>
+                        <ul>
+                          <li>Description: Late Plane</li>
+                          <li>Plane No.: </li>
+                          <li>Location: </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  //Toggle for explaining icon
+  $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+  });
+  </script>
+{% endblock %}

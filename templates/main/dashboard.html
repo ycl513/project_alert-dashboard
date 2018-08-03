@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% block title %}In Location Indicator{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-inlocation.css') }}">
+{% endblock %}
+
+{% block content %}
+  <!--Navigation bar-->
+  <nav class="navbar sticky-top navbar-expand-md bg-secondary navbar-light">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{ url_for('main.index')}}">
+          <img class="img-fluid" src="{{ url_for('static', filename='img/fedex-logo.png') }}" alt="logo" width="75" height="244"><p class="font-weight-bold text-white">In-Location Indicator Settings</p>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!--Main Content-->
+  <div class="container-fluid">
+    <div class="row margin-top-lg">
+      <div class="col-md-12">
+        <h3>Alert Hierarchy</h3>
+        <div class="float-lg-right">
+          <button type="button" class="btn btn-basic btn-lg">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/settings.png') }}">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Alert overview-->
+  <div class="container-fluid">
+    <div class="card card-default margin-top-sm">
+      <div class="card-header">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-example" aria-expanded="true" aria-controls="collapse-example" id="heading-example" class="d-block">
+          <i class="fa fa-chevron-down pull-right"></i>
+          Alert Overview
+        </a>
+      </div>
+      <div id="collapse-example" class="collapse show" role="tabpanel" aria-labelledby="heading-example">
+        <div class="card-body">
+          <span class="align-middle">
+            <div class="btn-group-justified">
+              <div class="row">
+                <div class="col-md-3 margin-top-sm margin-bottom-sm">
+                  <div class="card text-white bg-white o-hidden h-100">
+                    <div class="card-body d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-dark bg-secondary btn-lg"><img src="{{ url_for('static', filename='img/volume_3.png') }}" width="88" height="88">
+                      <div class="font-weight-bold huge text-white">4</div>
+                      <div class="font-weight-bold text-white">Volume Alerts</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 margin-top-sm margin-bottom-sm">
+                  <div class="card text-white bg-white o-hidden h-100">
+                    <div class="card-body d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-secondary bg-light btn-lg"><img src="{{ url_for('static', filename='img/staff_2.png') }}" width="88" height="88">
+                        <div class=font-weight-bold huge">5</div>
+                        <div class="font-weight-bold">Staff Alerts</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 margin-top-sm margin-bottom-sm">
+                  <div class="card text-white bg-white o-hidden h-100">
+                    <div class="card-body d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-dark bg-secondary btn-lg"><img src="{{ url_for('static', filename='img/timing_1.png') }}" width="88" height="88">
+                      <div class="font-weight-bold huge text-white">8</div>
+                      <div class="font-weight-bold text-white">Timing Alerts</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 margin-top-sm margin-bottom-sm">
+                  <div class="card text-white bg-white o-hidden h-100">
+                    <div class="card-body d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-secondary bg-light btn-lg"><img src="{{ url_for('static', filename='img/environmental_1.png') }}" width="88" height="88">
+                        <div class=font-weight-bold huge">2</div>
+                        <div class="font-weight-bold">Environmental Alerts</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span> 
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

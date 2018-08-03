@@ -1,0 +1,115 @@
+{% extends 'layout.html' %}
+
+{% block title %}Alert Management Dashboard{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+  <nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: #F6F2F9;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{ url_for('main.index')}}">
+          <img class="img-fluid" src="{{ url_for('static', filename='img/fedex-logo.png') }}" alt="logo" width="75" height="244">
+          Alert Management Dashboard
+        </a>
+      </div>
+      <ul class="nav mr-auto">
+        <li class="nav-item"><a href="{{ url_for('main.historical')}}" class="btn btn-info" role="button"><i class="fas fa-history"></i> Historical Data</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section main-container>
+    <div class="container-fluid">
+      <!--Alert Overview(SnapShot)-->
+      <div class="card bg-light text-dark margin-top-md">
+        <div class="card-header"> Current Alert Overview </div>
+        <div class="card-body bg-white">
+          <div class="row">
+            <div class="col-md-3 margin-top-sm margin-bottom-sm">
+              <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <img class="icon-card" src="{{ url_for('static', filename='img/dashboard_volume.png') }}" alt="Chania">
+                    </div>
+                    <div class="col-md-8 text-right">
+                      <div class="huge">{{ volume|safe }}</div>
+                      <div>Volume Alerts</div>
+                    </div>
+                  </div>
+                </div>
+                <a href="{{ url_for('main.currentalert')}}">
+                  <div class="card-footer bg-light text-primary">View Details 
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-3 margin-top-sm margin-bottom-sm">
+              <div class="card text-white bg-success o-hidden h-100">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+
+                      <img class="icon-card" src="{{ url_for('static', filename='img/dashboard_staff.png') }}" alt="Chania">
+
+                    </div>
+                    <div class="col-md-8 text-right">
+                      <div class="huge">{{ staff|safe }}</div>
+                      <div>Staff Alerts</div>
+                    </div>
+                  </div>
+                </div>
+                <a href="{{ url_for('main.currentalert')}}">
+                  <div class="card-footer bg-light text-success">View Details</div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-3 margin-top-sm margin-bottom-sm">
+              <div class="card text-white bg-warning o-hidden h-100">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+
+                      <img class="icon-card" src="{{ url_for('static', filename='img/dashboard_timing.png') }}" alt="Chania">
+
+                    </div>
+                    <div class="col-md-8 text-right">
+                      <div class="huge">{{ timing|safe }}</div>
+                      <div>Timing Alerts</div>
+                    </div>
+                  </div>
+                </div>
+                <a href="{{ url_for('main.currentalert')}}">
+                  <div class="card-footer bg-light text-warning">View Details</div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-3 margin-top-sm margin-bottom-sm">
+              <div class="card text-white bg-info o-hidden h-100">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+
+                      <img class="icon-card" src="{{ url_for('static', filename='img/dashboard_environmental.png') }}" alt="Chania">
+
+                    </div>
+                    <div class="col-md-8 text-right">
+                      <div class="huge">{{ environmental|safe }}</div>
+                      <div>Environmental Alerts</div>
+                    </div>
+                  </div>
+                </div>
+                <a href="{{ url_for('main.currentalert')}}">
+                  <div class="card-footer bg-light text-info">View Details</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
